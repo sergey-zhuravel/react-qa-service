@@ -5,34 +5,34 @@ import UsersStore from '../stores/UsersStore';
 import dispatcher from "../dispatcher";
 
 
-class AskQuestionForm extends Component {
+class PostAnswerForm extends Component {
 
     handleClick = () => {
         const createdBy = UsersStore.getCurrentUser();
-        const title = document.getElementById("title").value;
+        //const title = document.getElementById("title").value;
         const description = document.getElementById("description").value;
+
+        //link with question
+        const questionId = this.props.id;
+
         const data = {
-            title: title,
             description: description,
             createdBy: createdBy,
-            answers: [],
+            questionId: questionId,
         }
         //QuestionsStore.createQuestion(data);
         //Moved to dispatcher to handle events VS direct work with Store
-        dispatcher.dispatch({type:'CREATE_QUESTION', data: data})
+        dispatcher.dispatch({type:'CREATE_ANSWER', data: data})
 
-        this.props.history.push("/questions/all");
+        //this.props.history.push("/questions/all");
     }
 
     render() {
         return (
             <div className="container main-panel">
                 <div className="">
-                    <h2>Ask a Question:</h2>
-                    <label htmlFor="title">Title:</label>
-                    <input id="title" type="text" className="form-control text-left" />
-                    <span className="notice"> please enter a descriptive title for your question </span>
-
+                    <h2>Post an Answer:</h2>
+                    <span className="notice"> You can enter a detailed answer for the question. Your asnwer will be added to the question immediately. </span>
                     <br/>
                     <br/>
                     <label htmlFor="description">Description:</label>
@@ -45,4 +45,4 @@ class AskQuestionForm extends Component {
     }
 }
 
-export default AskQuestionForm;
+export default PostAnswerForm;

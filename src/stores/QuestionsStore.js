@@ -13,7 +13,7 @@ class QuestionsStore extends EventEmitter {
         title: "What is React? Is it a new JS framework?",
         description: "Detailed description of the question.",
         createdBy: "Guest",
-        answers: []
+        answers: [113464613, 235684679]
       },
       {
         id: 235684679,
@@ -36,13 +36,14 @@ class QuestionsStore extends EventEmitter {
   //create new question method
   createQuestion(data) {
     const id = Date.now();
-    const {title, description, createdBy} = data;
+    const {title, description, createdBy, answers} = data;
 
     this.questions.push({
       id,
       title,
       description,
-      createdBy
+      createdBy,
+      answers
     });
 
     this.emit("change"); //emit change event to update components with new data from Store

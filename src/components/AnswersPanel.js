@@ -6,11 +6,13 @@ import Sidebar from './Sidebar';
 
 import QuestionsStore from '../stores/QuestionsStore';
 
+import PostAnswerForm from './PostAnswerForm';
+
 
 class AnswersPanel extends Component {
     
     render() {
-        let id = 0;
+        let id = 0; //ToDo: Handle properly situation when there is no question
         if (this.props.params.id) {
             id = this.props.params.id;
         } 
@@ -23,6 +25,7 @@ class AnswersPanel extends Component {
                         <div>Question title and description</div>
                         <QuestionItem key={question.id} {...question} />
                         <AnswersList id={question.id} />
+                        <PostAnswerForm id={question.id} />
                     </div>
                     <div className="col-sm-4">
                         <Sidebar />

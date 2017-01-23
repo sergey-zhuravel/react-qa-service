@@ -26,7 +26,6 @@ class QuestionsList extends Component {
         }
         //moved filtering from component to the Store
         const questions = QuestionsStore.getQuestions(questionsType);
-        console.log(QuestionsStore.getAll());
         const QuestionComponents = questions.map((question) => {
             return <QuestionItem key={question.id} {...question} />;
         });

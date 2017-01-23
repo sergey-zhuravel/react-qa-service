@@ -4,7 +4,6 @@ import UsersStore from '../stores/UsersStore';
 class LoginForm extends Component {
 
     handleClick = () => {
-        //console.log('this is:', this);
         const userName = document.getElementById("user").value;
         UsersStore.setCurrentUser(userName);
         this.props.history.push("/questions/all");
