@@ -9,7 +9,8 @@ class AnswersList extends Component {
             answers: AnswersStore.getAll(),
         }
     }
-
+    //we can use it to show all existing answers (for example in admin panel)
+    //now this.state is not used
     componentWillMount() {
         AnswersStore.on("change", () => {
             this.setState({
@@ -27,7 +28,7 @@ class AnswersList extends Component {
         
         return (
             <div>
-            Answers
+                Answers:
                 {AnswerComponents}
             </div>
             

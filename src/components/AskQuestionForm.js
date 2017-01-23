@@ -27,10 +27,10 @@ class AskQuestionForm extends Component {
     render() {
         return (
             <div className="container main-panel">
-                <div className="">
+                <div className="form">
                     <h2>Ask a Question:</h2>
                     <label htmlFor="title">Title:</label>
-                    <input id="title" type="text" className="form-control text-left" />
+                    <input id="title" type="text" className="form-control text-left" required={true} />
                     <span className="notice"> please enter a descriptive title for your question </span>
 
                     <br/>

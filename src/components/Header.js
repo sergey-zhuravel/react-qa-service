@@ -33,7 +33,7 @@ class Header extends Component {
           <nav className="navbar navbar-default">
             <div className="container">
               <div className="navbar-header">
-                <a className="navbar-brand" href="#">Q/A</a>
+                <a className="navbar-brand" href="#">Login</a>
               </div>
               <ul className="nav navbar-nav navbar-left">
                 <li><a href="/"></a></li>

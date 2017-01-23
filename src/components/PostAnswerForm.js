@@ -39,7 +39,7 @@ class PostAnswerForm extends Component {
                     <br/>
                     <br/>
                     <label htmlFor="description">Description:</label>
-                    <textarea className="form-control" rows="5" id="description"></textarea>
+                    <textarea className="form-control" rows="5" id="description" required={true} ></textarea>
                     <br/>
                     <button className="btn btn-success" onClick={this.handleClick}>Submit</button>
                 </div>
