@@ -14,8 +14,11 @@ class PostAnswerForm extends Component {
 
         //link with question
         const questionId = this.props.id;
+        //generate unique ID
+        const id = Date.now();
 
         const data = {
+            id: id,
             description: description,
             createdBy: createdBy,
             questionId: questionId,

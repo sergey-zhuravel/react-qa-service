@@ -31,7 +31,7 @@ class AnswersStore extends EventEmitter {
 
   //method to add new answer
   createAnswer(data) {
-    const id = Date.now();
+    const id = data.id; //Date.now();
     const {questionId, description, createdBy} = data;
 
     //update only local storage but possible to store into DB or remote service

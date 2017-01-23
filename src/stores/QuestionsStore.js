@@ -83,6 +83,15 @@ class QuestionsStore extends EventEmitter {
     });
   }
 
+  updateQuestion(data) {
+    //find index of the quetion in the array
+    const index = this.questions.findIndex((question) => {
+      return question.id === parseInt(data.questionId, 10);
+    });
+    //add new answer to the question.
+    this.questions[index].answers.push(data.id);
+  }
+
   //handle all actions
   handleActions(action) {
 
@@ -96,6 +105,11 @@ class QuestionsStore extends EventEmitter {
       case "RECEIVE_QUESIONS": {
         this.questions = action.questions;
         this.emit("change");
+        break;
+      }
+      //Update question when new answer was added
+      case "CREATE_ANSWER": {
+        this.updateQuestion(action.data);
         break;
       }
       default:
