@@ -5,20 +5,29 @@ import QuestionsStore from '../stores/QuestionsStore';
 class QuestionsList extends Component {
     constructor() {
         super();
+        this.getQuestions = this.getQuestions.bind(this); //bind function to this
         this.state = {
             questions: QuestionsStore.getAll(),
         }
     }
 
     componentWillMount() {
-        QuestionsStore.on("change", () => {
+        QuestionsStore.on("change", this.getQuestions);
+    }
 
-            //ToDo Fix warning without isMounted check
-            this && this.setState({
-                questions: QuestionsStore.getAll(),
-            });
+    //remove old listeners to fix memory leaks with Flux
+    componentWillUnmount() {
+        QuestionsStore.removeListener("change", this.getQuestions);
+    }
+
+    getQuestions() {
+        this.setState({
+            questions: QuestionsStore.getAll(),
         });
     }
+
+
+
     render() {
         let questionsType = 'all'; //by default get all questions
         if (this.props.type) {
