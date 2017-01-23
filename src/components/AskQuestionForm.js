@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import UsersStore from '../stores/UsersStore';
-//import QuestionsStore from '../stores/QuestionsStore';
-
-import dispatcher from "../dispatcher";
+import * as QuestionActions from '../actions/QuestionActions';
 
 
 class AskQuestionForm extends Component {
@@ -19,7 +17,12 @@ class AskQuestionForm extends Component {
         }
         //QuestionsStore.createQuestion(data);
         //Moved to dispatcher to handle events VS direct work with Store
-        dispatcher.dispatch({type:'CREATE_QUESTION', data: data})
+        //dispatcher.dispatch({type:'CREATE_QUESTION', data: data});
+
+        //Refactoring to use Actions
+        QuestionActions.createQuestion(data);
+
+    
 
         this.props.history.push("/questions/all");
     }

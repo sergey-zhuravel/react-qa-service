@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import UsersStore from '../stores/UsersStore';
-//import QuestionsStore from '../stores/QuestionsStore';
-
-import dispatcher from "../dispatcher";
+import * as AnswerActions from '../actions/AnswerActions';
 
 
 class PostAnswerForm extends Component {
@@ -25,9 +23,12 @@ class PostAnswerForm extends Component {
         }
         //QuestionsStore.createQuestion(data);
         //Moved to dispatcher to handle events VS direct work with Store
-        dispatcher.dispatch({type:'CREATE_ANSWER', data: data})
+        //dispatcher.dispatch({type:'CREATE_ANSWER', data: data})
 
-        //this.props.history.push("/questions/all");
+        //refactored to use Actions. Commented out direct using the dispatcher
+        AnswerActions.createAnswer(data);
+
+
     }
 
     render() {
