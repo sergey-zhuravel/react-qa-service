@@ -12,6 +12,9 @@ react-qa-service/
     index.html
     favicon.ico
   src/
+    actions/
+      AnswerActions.js
+      QuestionActions.js
     components/
       AnswerItem.js
       AnswersList.js
@@ -30,11 +33,11 @@ react-qa-service/
       QuestionsStore.js
       UsersStore.js
     App.css
-    App.js
     App.test.js
     index.css
     index.js
     logo.svg
+    QuestionStore.test.js
 ```
 
 For the project to build, **these files must exist with exact filenames**:
