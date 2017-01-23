@@ -20,7 +20,13 @@ class QuestionsList extends Component {
         });
     }
     render() {
-        const {questions} = this.state;
+        let questionsType = 'all'; //by default get all questions
+        if (this.props.type) {
+            questionsType = this.props.type;
+        }
+        //moved filtering from component to the Store
+        const questions = QuestionsStore.getQuestions(questionsType);
+        console.log(QuestionsStore.getAll());
         const QuestionComponents = questions.map((question) => {
             return <QuestionItem key={question.id} {...question} />;
         });

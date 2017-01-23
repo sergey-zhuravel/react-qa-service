@@ -10,14 +10,11 @@ import QuestionsStore from '../stores/QuestionsStore';
 class AnswersPanel extends Component {
     
     render() {
-        let id = 235684679;
+        let id = 0;
         if (this.props.params.id) {
             id = this.props.params.id;
         } 
         const question = QuestionsStore.getQuestionById(id);
-        console.log(this.props);
-        console.log('question:');
-         console.log(question);
 
         return (
             <div className="container main-panel">
@@ -25,7 +22,7 @@ class AnswersPanel extends Component {
                     <div className="col-sm-8">
                         <div>Question title and description</div>
                         <QuestionItem key={question.id} {...question} />
-                        <AnswersList />
+                        <AnswersList id={question.id} />
                     </div>
                     <div className="col-sm-4">
                         <Sidebar />

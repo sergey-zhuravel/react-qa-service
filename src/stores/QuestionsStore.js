@@ -2,9 +2,11 @@ import { EventEmitter } from "events";
 
 import dispatcher from "../dispatcher";
 
+//QuestionsStore to retrieve data from mock or from API and to handle actions
 class QuestionsStore extends EventEmitter {
   constructor() {
-    super()
+    super();
+    //mock data (ToDo - implement API with data receiving)
     this.questions = [
       {
         id: 113464613,
@@ -20,10 +22,18 @@ class QuestionsStore extends EventEmitter {
         createdBy: "Guest",
         answers: []
       },
+      {
+        id: 235684689,
+        title: "What is the future of the React Native?",
+        description: "Detailed description of the question.",
+        createdBy: "Guest",
+        answers: [235684689]
+      },
     ];
     this.currentQuestion = 0;
   }
 
+  //create new question method
   createQuestion(data) {
     const id = Date.now();
     const {title, description, createdBy} = data;
@@ -35,11 +45,33 @@ class QuestionsStore extends EventEmitter {
       createdBy
     });
 
-    this.emit("change");
+    this.emit("change"); //emit change event to update components with new data from Store
   }
 
+  //Method to get all available questions in Store.
   getAll() {
     return this.questions;
+  }
+
+  //filter for different types of questions
+  getQuestions(type) {
+    switch(type) {
+      case "all": {
+        return this.questions;
+      }
+      case "unasnwered": {
+        return this.questions.filter((question) => {
+          return question.answers.length === 0;
+        });
+      }
+      case "answered": {
+        return this.questions.filter((question) => {
+          return question.answers.length > 0;
+        });
+      }
+      default:
+        return this.questions;
+    }
   }
 
   //getQuestionById method to get required question by ID
@@ -50,6 +82,7 @@ class QuestionsStore extends EventEmitter {
     });
   }
 
+  //handle all actions
   handleActions(action) {
 
     switch(action.type) {
@@ -58,6 +91,7 @@ class QuestionsStore extends EventEmitter {
         this.createQuestion(action.data);
         break;
       }
+      //Action to receive questions from API (ToDo)
       case "RECEIVE_QUESIONS": {
         this.questions = action.questions;
         this.emit("change");

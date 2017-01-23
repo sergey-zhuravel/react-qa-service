@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import UsersStore from '../stores/UsersStore';
-import QuestionsStore from '../stores/QuestionsStore';
+//import QuestionsStore from '../stores/QuestionsStore';
 
 import dispatcher from "../dispatcher";
 

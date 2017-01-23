@@ -18,7 +18,9 @@ class AnswersList extends Component {
         });
     }
     render() {
-        const {answers} = this.state;
+        //const {answers} = this.state; 
+        const questionId = this.props.id;
+        const answers = AnswersStore.getQuestionAnswers(questionId);
         const AnswerComponents = answers.map((answer) => {
             return <AnswerItem key={answer.id} {...answer} />;
         });

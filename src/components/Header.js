@@ -14,6 +14,7 @@ class Header extends Component {
     }
   }
 
+  //runs only one time
   componentWillMount() {
         UsersStore.on("change", () => {
             this.setState({

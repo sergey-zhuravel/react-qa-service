@@ -7,12 +7,11 @@ import Sidebar from './Sidebar';
 class QuestionsPanel extends Component {
     
     render() {
-        console.log(this.props.params.type);
         return (
             <div className="container main-panel">
                 <div className="row">
                     <div className="col-sm-8">
-                        <QuestionsList />
+                        <QuestionsList type={this.props.params.type}/>
                     </div>
                     <div className="col-sm-4">
                         <Sidebar />
